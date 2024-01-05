@@ -1,38 +1,33 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@700&family=Crete+Round:ital@1&family=Dosis:wght@500&family=Noto+Sans:ital,wght@1,300&family=Raleway&family=Rubik+Glitch&family=Teko:wght@500;600&display=swap');
+.custom-font{
+    font-family: 'Anton', sans-serif;
+font-family: 'Comfortaa', sans-serif;
+font-family: 'Crete Round', serif;
+font-family: 'Dosis', sans-serif;
+font-family: 'Noto Sans', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Rubik Glitch', system-ui;
+font-family: 'Teko', sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pos-cards{
+    position: absolute;
+    bottom: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+  
+    gap: 2em;
+    
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.stylediv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    flex-direction: column;
 }
