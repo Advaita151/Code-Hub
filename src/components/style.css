@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@700&family=Crete+Round:ital@1&family=Dosis:wght@500&family=Noto+Sans:ital,wght@1,300&family=Raleway&family=Rubik+Glitch&family=Teko:wght@500;600&display=swap');
+.custom-font{
+    font-family: 'Anton', sans-serif;
+font-family: 'Comfortaa', sans-serif;
+font-family: 'Crete Round', serif;
+font-family: 'Dosis', sans-serif;
+font-family: 'Noto Sans', sans-serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Rubik Glitch', system-ui;
+font-family: 'Teko', sans-serif;
+}
+.pos-cards{
+    position: absolute;
+    bottom: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+  
+    gap: 2em;
+    
+}
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+.stylediv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    flex-direction: column;
+}
+.board{
+    display: flex;
+    width: 100%;
+    gap:2em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.platforms{
+    display: flex;
+    gap:2em
+}
