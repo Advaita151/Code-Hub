@@ -7,13 +7,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.Port 
 const mongoDB = process.env.MONGODB_URI
+const message = process.env.MESSAGE
 
 
 app.use(express.json());
 app.use(cors()); 
 
 app.get("/",(req,res)=>{
-    res.status(235).send("If you found this message on the website. Congratulations!!!. Contact Advaita Vedanta, He has a job for you!")
+    res.status(235).send(message)
 })
 
 mongoose.connect(mongoDB)
