@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import profileRoute from "./routes/profileRoute.js"
+import updateCodeforcesRating from "./controllers/codeforcesRating.js"
 
 
 dotenv.config();
@@ -10,6 +11,11 @@ const app = express();
 const PORT = process.env.PORT 
 const mongoDB = process.env.MONGODB_URI
 const message = process.env.MESSAGE
+const updateCodeforcesPeriodically = async () => {
+    await updateCodeforcesRating();
+};
+setInterval(updateCodeforcesPeriodically, 1000 * 60 * 60 * 24);
+
 
 
 app.use(express.json());

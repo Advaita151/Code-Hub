@@ -21,6 +21,9 @@ const userSchema = new mongoose.Schema({
     codechef : {type:String, required: true},
     leetcode : {type:String, required: true},
     college : {type:String, required: true},
+    forcesRating : {type:Number},
+    chefRating : {type:Number},
+    leetRating : {type:Number},
   })
 
 userSchema.pre('save', async function(next){

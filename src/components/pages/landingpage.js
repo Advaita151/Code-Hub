@@ -1,8 +1,8 @@
 import React from 'react';
 import '../style.css';
 import bg from '../../resources/backvideo(low).mp4';
-import Board from '../othercomponents/board';
-import Upcoming from '../othercomponents/upcoming';
+import Board from '../othercomponents/board.js';
+import Upcoming from '../othercomponents/upcoming.js';
 
 function Landingpage() {
   const videoStyles = {
