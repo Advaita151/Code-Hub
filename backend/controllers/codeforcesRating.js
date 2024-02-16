@@ -4,11 +4,10 @@ import axios from "axios";
 async function updateCodeforcesRating() {
     try {
         const users = await User.find();
+        console.log(users)
         for (const user of users){
             const codeforces = user.codeforces;
-            console.log(codeforces)
             const response = await axios.get(`https://codeforces.com/api/user.info?handles=${codeforces}`)
-            console.log(response.data)
             if (response.data.status === "OK"){
                 const forcesRating = response.data.result[0].rating || 0;
                 await User.updateOne({_id: user._id},{forcesRating: forcesRating})

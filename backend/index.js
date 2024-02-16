@@ -14,6 +14,7 @@ const message = process.env.MESSAGE
 const updateCodeforcesPeriodically = async () => {
     await updateCodeforcesRating();
 };
+updateCodeforcesPeriodically
 setInterval(updateCodeforcesPeriodically, 1000 * 60 * 60 * 24);
 
 
