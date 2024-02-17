@@ -1,20 +1,22 @@
-import { User } from "../models/User";
-import axios from "axios";
+import { User } from "../models/User.js";
 import asyncHandler from "express-async-handler";
 
-const getResponse = async (url) => {
-    try {
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      console.error(error.message);
-      throw error;
-    }
-};
 
-const getCodeforces = asyncHandler (async (req, res) => {
-    const leaderboard = await User.find({}).sort({forcesrating : -1});
-    res.status(200).json(leaderboard);
+
+export  const getCodeforces = asyncHandler (async (req, res) => {
+    const leaderboard1 = await User.find({}).sort({forcesRating : -1});
+    res.status(200).json(leaderboard1);
 });
 
-module.exports ={getCodeforces}
+export const getCodechef = asyncHandler (async (req, res) => {
+    const leaderboard2 = await User.find({}).sort({chefRating : -1});
+    res.status(200).json(leaderboard2);
+});
+export const getLeetcode = asyncHandler (async (req, res) => {
+    const leaderboard3 = await User.find({}).sort({leetRating : 'desc'});
+    res.status(200).json(leaderboard3);
+});
+
+// export default getLeetcode
+// export default getCodechef
+// export default getCodeforces

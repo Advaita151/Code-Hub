@@ -6,6 +6,7 @@ import profileRoute from "./routes/profileRoute.js"
 import updateCodeforcesRating from "./controllers/codeforcesRating.js"
 import updateCodechefRating from "./controllers/codechefRating.js";
 import updateLeetcodeRating from "./controllers/leetcodeRating.js";
+import boardRoute from "./routes/boardRoute.js"
 
 
 dotenv.config();
@@ -38,6 +39,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/profile",profileRoute)
+app.use("/board",boardRoute)
 
 mongoose.connect(mongoDB)
     .then(()=>{

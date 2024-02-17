@@ -24,6 +24,7 @@ export default function Register() {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5555/profile/register', {email,password,name,codeforces,codechef,leetcode,college})
+            // const response = await axios.post('http://localhost:5555/profile/register', {email,"123456","akslegion","akslegion","codechef","leetcode","college"})
             console.log(response.data)
         } catch (error) {
             console.error("Register failed",error)
