@@ -43,7 +43,6 @@ router.post("/register", async(req,res)=>{
         res.status(400).send("User not Created")
     }
   
-    res.send("User Registered")
 })
   
   

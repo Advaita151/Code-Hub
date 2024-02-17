@@ -1,5 +1,5 @@
 // Register.js
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import '../style.css';
 import email_img from '../../resources/email.png';
@@ -9,67 +9,87 @@ import leetcode_img from '../../resources/leetcodeicon.png';
 import codechef_img from '../../resources/codecheficon.png';
 import codeforces_img from '../../resources/codeforcesicon.png';
 import college_img from '../../resources/college.png';
+import axios from "axios";
 
 export default function Register() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [codeforces, setCodeforces] = useState('');
+    const [codechef, setCodechef] = useState('');
+    const [leetcode, setLeetcode] = useState('');
+    const [college, setCollege] = useState('');
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:5555/profile/register', {email,password,name,codeforces,codechef,leetcode,college})
+            console.log(response.data)
+        } catch (error) {
+            console.error("Register failed",error)
+        }
+    }
     return (
         <div className="gradient-background">
             <div className="container-login">
                 <div className="header-login">
                     <div className="text-login"> SignUp</div>
                 </div>
+                <form onSubmit={handleSubmit}>
                 <div className="inputs">
                     <div className="input-group">
                         {/* For name */}
                         <div className="input">
                             <img src={person_img} alt="" style={{ width: '30px', height: 'auto' }}/>
-                            <input type="text" placeholder="Enter your Name"/>
+                            <input type="text" placeholder="Enter your Name" value={name} onChange={(e)=>setName(e.target.value)}/>
                         </div>
                         {/* For Email */}
                         <div className="input">
                             <img src={email_img} alt="" style={{ width: '28px', height: 'auto' }}/>
-                            <input type="email" placeholder="Enter your Email"/>
+                            <input type="email" placeholder="Enter your Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         </div> 
                     </div>
                     <div className="input-group">
                         {/* For Password */}
                         <div className="input">
                             <img src={password_img} alt="" style={{ width: '28px', height: 'auto' }}/>
-                            <input type="password" placeholder="Enter your password"/>
+                            <input type="password" placeholder="Enter your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         </div>
                         {/* For CodeForces handle */}
                         <div className="input">
                             <img src={codeforces_img} alt="" style={{ width: '25px', height: 'auto' }}/>
-                            <input type="text"placeholder="Codeforces Username" />
+                            <input type="text"placeholder="Codeforces Username" value={codeforces} onChange={(e)=>setCodeforces(e.target.value)} />
                         </div>
                     </div>
                     <div className="input-group">
                         {/* For CodeChef handle */}
                         <div className="input">
                             <img src={codechef_img} alt="" style={{ width: '23px', height: 'auto' }}/>
-                            <input type="text" placeholder="Codechef Username"/>
+                            <input type="text" placeholder="Codechef Username" value={codechef} onChange={(e)=>setCodechef(e.target.value)}/>
                         </div>
                         {/* For LeetCode handle */}
                         <div className="input">
                             <img src={leetcode_img} alt="" style={{ width: '22px', height: 'auto' }}/>
-                            <input type="text" placeholder="Leetcode Username"/>
+                            <input type="text" placeholder="Leetcode Username" value={leetcode} onChange={(e)=>setLeetcode(e.target.value)}/>
                         </div>
                     </div>
                     {/* For College name */}
                     <div className="input-group">
                         <div className="input">
                             <img src={college_img} alt="" style={{ width: '35px', height: 'auto' }}/>
-                            <input type="text" placeholder="Enter your College Name"/>
+                            <input type="text" placeholder="Enter your College Name" value={college} onChange={(e)=>setCollege(e.target.value)}/>
                         </div>
                     </div>
                 </div>
                 <div className="submit-container">
-                    <button className="register-button">Register</button>
+                    <button type="submit" className="register-button">Register</button>
                     <div className="login-container">
                         <span style={{ marginRight: '0.4em' }}>Already have an account? </span>
                        
                         <Link to="/login" className="login-link">Log In</Link>
                     </div>
                 </div>
+                </form>
                 <div className="forgot">Forgot your password? <a href="rand.html">Click here</a></div>
             </div>
         </div>
