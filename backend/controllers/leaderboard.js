@@ -12,9 +12,9 @@ const getResponse = async (url) => {
     }
 };
 
-const getLeaderboard = asyncHandler (async (req, res) => {
-    const leaderboard = await User.find({}).sort({rating : -1});
+const getCodeforces = asyncHandler (async (req, res) => {
+    const leaderboard = await User.find({}).sort({forcesrating : -1});
     res.status(200).json(leaderboard);
 });
 
-module.exports ={getLeaderboard}
+module.exports ={getCodeforces}

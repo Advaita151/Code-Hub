@@ -1,4 +1,3 @@
-
 import { User } from "../models/User.js";
 import axios from "axios";
 import cheerio from "cheerio"; // for web scraping
@@ -8,7 +7,7 @@ async function updateCodechefRating() {
        
         const users = await User.find();
         
-        
+        console.log("hello")
         for (const user of users){
             const codechef = user.codechef;
             
@@ -24,10 +23,10 @@ async function updateCodechefRating() {
             
             
             const ratingElement = $(".rating-number").first(); 
-            const codechefRating = parseInt(ratingElement.text().trim()); 
+            const chefRating = parseInt(ratingElement.text().trim()); 
             
             
-            await User.updateOne({_id: user._id}, {codechefRating: codechefRating});
+            await User.updateOne({_id: user._id}, {chefRating: chefRating});
         }
         
         console.log('Codechef ratings updated successfully');

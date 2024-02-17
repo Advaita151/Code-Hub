@@ -4,6 +4,8 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import profileRoute from "./routes/profileRoute.js"
 import updateCodeforcesRating from "./controllers/codeforcesRating.js"
+import updateCodechefRating from "./controllers/codechefRating.js";
+import updateLeetcodeRating from "./controllers/leetcodeRating.js";
 
 
 dotenv.config();
@@ -14,9 +16,18 @@ const message = process.env.MESSAGE
 const updateCodeforcesPeriodically = async () => {
     await updateCodeforcesRating();
 };
-updateCodeforcesPeriodically
-setInterval(updateCodeforcesPeriodically, 1000 * 60 * 60 * 24);
+const updateCodechefPeriodically = async () => {
+    await updateCodechefRating();
+};
+const updateLeetcodePeriodically = async () => {
+    await updateLeetcodeRating();
+};
 
+updateCodeforcesPeriodically
+updateCodechefPeriodically
+setInterval(updateCodeforcesPeriodically, 1000 * 60 * 60 * 24);
+setInterval(updateCodechefPeriodically, 1000 * 60 * 60 * 24);
+setInterval(updateLeetcodePeriodically,1000 * 60 * 60 * 24);
 
 
 app.use(express.json());
