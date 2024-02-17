@@ -13,6 +13,8 @@ export default function Board(){
           <button className={getStartedButtonStyles}>LeetCode</button>
           </div>
 
+          
+
         </div>
     )
 }
