@@ -92,10 +92,11 @@ function Landingpage() {
     Your browser does not support the video tag.
   </video>
 
-  <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-white flex items-center">
+  <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-white flex items-center main-container-started">
          
-          <div className="mr-8">
-            <h1 className="text-9xl font-bold mb-2 custom-font">Code Hub</h1>
+          <div className="mr-8 container-started">
+          <h1 className="text-9xl font-bold mb-2 custom-font" id="codeHubTitle">Code Hub</h1>
+
             <p className="text-lg mb-4">Let us compete here in the arena</p>
             <button className={getStartedButtonStyles}>Get Started</button>
           </div>
