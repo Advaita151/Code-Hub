@@ -37,6 +37,8 @@ router.post("/register", async(req,res)=>{
   
     try {
         const user = await User.create({email,password,name,codeforces,codechef,leetcode,college});
+        const token = createToken(user._id);
+        res.cookie('jwt',token,cookieOptions)
         res.status(400).json(user)
     } catch (error) {
         console.log(error);
@@ -44,6 +46,7 @@ router.post("/register", async(req,res)=>{
     }
   
 })
-  
+
+
   
 export default router;

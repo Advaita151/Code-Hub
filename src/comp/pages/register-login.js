@@ -1,6 +1,6 @@
 // Register.js
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import '../style.css';
 import email_img from '../../resources/email.png';
 import person_img from '../../resources/person.png';
@@ -19,15 +19,18 @@ export default function Register() {
     const [codechef, setCodechef] = useState('');
     const [leetcode, setLeetcode] = useState('');
     const [college, setCollege] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5555/profile/register', {email,password,name,codeforces,codechef,leetcode,college})
-            // const response = await axios.post('http://localhost:5555/profile/register', {email,"123456","akslegion","akslegion","codechef","leetcode","college"})
             console.log(response.data)
+            if(response.data.user){
+                navigate("/")
+            }else alert(response.data.message)
         } catch (error) {
-            console.error("Register failed",error)
+            alert(error.response.data.message)
         }
     }
     return (

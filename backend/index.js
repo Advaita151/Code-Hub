@@ -1,12 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import profileRoute from "./routes/profileRoute.js"
 import updateCodeforcesRating from "./controllers/codeforcesRating.js"
 import updateCodechefRating from "./controllers/codechefRating.js";
 import updateLeetcodeRating from "./controllers/leetcodeRating.js";
-import boardRoute from "./routes/boardRoute.js"
+import boardRoute from "./routes/boardRoute.js";
+import userRoute from "./routes/userRoute.js";
+import { protect } from "./protect.js";
 
 
 dotenv.config();
@@ -32,7 +35,11 @@ setInterval(updateLeetcodePeriodically,1000 * 60 * 60 * 24);
 
 
 app.use(express.json());
-app.use(cors()); 
+app.use(cors({
+    origin: 'http://localhost:3000',  // Allow requests from this origin
+    credentials: true,  // Allow credentials (cookies, authorization headers)
+  }));
+app.use(cookieParser());
 
 app.get("/",(req,res)=>{
     res.status(235).send(message)
@@ -40,6 +47,7 @@ app.get("/",(req,res)=>{
 
 app.use("/profile",profileRoute)
 app.use("/board",boardRoute)
+app.use("/user",protect,userRoute)
 
 mongoose.connect(mongoDB)
     .then(()=>{

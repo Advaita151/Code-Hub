@@ -1,8 +1,11 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import '../style.css';
 import bg from '../../resources/backvideo(low).mp4';
 import Board from '../othercomponents/board.js';
 import Upcoming from '../othercomponents/upcoming.js';
+import UserInitials from '../othercomponents/userInitials.js';
+import axios from 'axios';
+
 
 function Landingpage() {
   const videoStyles = {
@@ -71,6 +74,24 @@ function Landingpage() {
     }
   };
 
+  
+  const [userName, setUserName] = useState('P');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5555/user/details`,{withCredentials:true});
+        // Assuming the response contains the user's name
+        setUserName(response.data.name);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        
+      }
+    };
+
+    fetchUserData();
+  }, );
+
   return (
     <div style={mainStyles}>
       <div style={navStyles}>
@@ -82,7 +103,7 @@ function Landingpage() {
           <a style={navItemStyles}  href="#home">Home</a>
           <a style={navItemStyles} href="#leaderboards" onClick={scrollToSection}>Leaderboards</a>
           <a style={navItemStyles} href="#question-bank">Practice</a>
-          <div style={profileCircleStyles}>P</div>
+          <div style={profileCircleStyles}><UserInitials name={userName} /></div>
         </div>
       </div>
 
