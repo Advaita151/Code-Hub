@@ -208,7 +208,7 @@ function Landingpage() {
         />
         <div className="bg-white p-4 rounded-md shadow-md mb-4 flex flex-col gap-1 h-50 w-48">
           <img src="https://leetcode.com/static/images/LeetCode_Sharing.png" alt="LeetCode" className="w-full h-20 object-cover mb-4 rounded-md" />
-          <h3 className="text-xl font-bold mb-2">"LeetCode"</h3>
+          <h3 className="text-xl font-bold mb-2">LeetCode</h3>
           {nextLeetContest ? (
         <div>
           <h2>Next is on:</h2>
