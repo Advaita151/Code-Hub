@@ -1,7 +1,7 @@
 // Login.js
 import React, {useState} from "react";
 
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import '../style.css';
 import email_img from '../../resources/email.png';
 import password_img from '../../resources/password.png';
@@ -13,12 +13,17 @@ export default function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-        const response = await axios.post('http://localhost:5555/profile/login', { email, password });
-        console.log('Login successful:', response.data);
+            const response = await axios.post('http://localhost:5555/profile/login', { email, password },{withCredentials: true,});
+            console.log('Login successful:', response.data);
+            document.cookie =response.cookie
+            if(response.data.user){
+                navigate("/");
+            }   
         } catch (error) {
         console.error('Login failed:', error);
     }}
