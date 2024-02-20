@@ -7,7 +7,7 @@ const Upcoming = ({ imageUrl, title, description }) => {
   return (
     <>
     
-    <div className="bg-white p-4 rounded-md shadow-md mb-4 flex flex-col gap-1 h-50 w-48">
+    <div className="bg-white p-4 rounded-md shadow-md mb-4 flex flex-col gap-1 h-50 w-92">
       <img src={imageUrl} alt={title} className="w-full h-20 object-cover mb-4 rounded-md" />
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-gray-600">Next is on:</p>

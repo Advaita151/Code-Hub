@@ -188,7 +188,7 @@ function Landingpage() {
         
         <div className='pos-cards stylediv'><h2 className="text-4xl font-bold mb-4 text-white custom-font">Upcoming Contests</h2>
         <div className="cards">
-        <div className="bg-white p-4 rounded-md shadow-md mb-4 flex flex-col gap-1 h-50 w-48">
+        <div className="bg-white p-4 rounded-md shadow-md mb-4 flex flex-col gap-1 h-50 w-70">
           <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--mzwvoucO--/c_imagga_scale,f_auto,fl_progressive,h_1080,q_auto,w_1080/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cer3l19eex0wy900b101.jpg" alt="Codeforces" className="w-full h-20 object-cover mb-4 rounded-md" />
           <h3 className="text-xl font-bold mb-2">Codeforces</h3>
           {
@@ -206,7 +206,7 @@ function Landingpage() {
           title="CodeChef"
           description={nextWednesday}
         />
-        <div className="bg-white p-4 rounded-md shadow-md mb-4 flex flex-col gap-1 h-50 w-48">
+        <div className="bg-white p-4 rounded-md shadow-md mb-4 flex flex-col gap-1 h-50 w-70">
           <img src="https://leetcode.com/static/images/LeetCode_Sharing.png" alt="LeetCode" className="w-full h-20 object-cover mb-4 rounded-md" />
           <h3 className="text-xl font-bold mb-2">LeetCode</h3>
           {nextLeetContest ? (

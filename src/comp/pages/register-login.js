@@ -1,6 +1,7 @@
 // Register.js
 import React, {useState} from "react";
-import { Link,useNavigate } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 import '../style.css';
 import email_img from '../../resources/email.png';
 import person_img from '../../resources/person.png';
@@ -19,22 +20,21 @@ export default function Register() {
     const [codechef, setCodechef] = useState('');
     const [leetcode, setLeetcode] = useState('');
     const [college, setCollege] = useState('');
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5555/profile/register', {email,password,name,codeforces,codechef,leetcode,college})
+            // const response = await axios.post('http://localhost:5555/profile/register', {email,"123456","akslegion","akslegion","codechef","leetcode","college"})
             console.log(response.data)
-            if(response.data.user){
-                navigate("/")
-            }else alert(response.data.message)
         } catch (error) {
-            alert(error.response.data.message)
+            console.error("Register failed",error)
         }
     }
     return (
         <div className="gradient-background">
+            <div className="noise"></div>
+            <div className="overlay"></div>
             <div className="container-login">
                 <div className="header-login">
                     <div className="text-login"> SignUp</div>
@@ -45,43 +45,43 @@ export default function Register() {
                         {/* For name */}
                         <div className="input">
                             <img src={person_img} alt="" style={{ width: '30px', height: 'auto' }}/>
-                            <input type="text" placeholder="Enter your Name" value={name} onChange={(e)=>setName(e.target.value)}/>
+                            <input type="text" placeholder="Enter your Name" value={name} onChange={(e)=>setName(e.target.value)} required/>
                         </div>
                         {/* For Email */}
                         <div className="input">
                             <img src={email_img} alt="" style={{ width: '28px', height: 'auto' }}/>
-                            <input type="email" placeholder="Enter your Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                            <input type="email" placeholder="Enter your Email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
                         </div> 
                     </div>
                     <div className="input-group">
                         {/* For Password */}
                         <div className="input">
                             <img src={password_img} alt="" style={{ width: '28px', height: 'auto' }}/>
-                            <input type="password" placeholder="Enter your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                            <input type="password" placeholder="Enter your password" value={password} onChange={(e)=>setPassword(e.target.value)} required/>
                         </div>
                         {/* For CodeForces handle */}
                         <div className="input">
                             <img src={codeforces_img} alt="" style={{ width: '25px', height: 'auto' }}/>
-                            <input type="text"placeholder="Codeforces Username" value={codeforces} onChange={(e)=>setCodeforces(e.target.value)} />
+                            <input type="text"placeholder="Codeforces Username" value={codeforces} onChange={(e)=>setCodeforces(e.target.value)}required />
                         </div>
                     </div>
                     <div className="input-group">
                         {/* For CodeChef handle */}
                         <div className="input">
                             <img src={codechef_img} alt="" style={{ width: '23px', height: 'auto' }}/>
-                            <input type="text" placeholder="Codechef Username" value={codechef} onChange={(e)=>setCodechef(e.target.value)}/>
+                            <input type="text" placeholder="Codechef Username" value={codechef} onChange={(e)=>setCodechef(e.target.value)} required/>
                         </div>
                         {/* For LeetCode handle */}
                         <div className="input">
                             <img src={leetcode_img} alt="" style={{ width: '22px', height: 'auto' }}/>
-                            <input type="text" placeholder="Leetcode Username" value={leetcode} onChange={(e)=>setLeetcode(e.target.value)}/>
+                            <input type="text" placeholder="Leetcode Username" value={leetcode} onChange={(e)=>setLeetcode(e.target.value)} required/>
                         </div>
                     </div>
                     {/* For College name */}
                     <div className="input-group">
                         <div className="input">
                             <img src={college_img} alt="" style={{ width: '35px', height: 'auto' }}/>
-                            <input type="text" placeholder="Enter your College Name" value={college} onChange={(e)=>setCollege(e.target.value)}/>
+                            <input type="text" placeholder="Enter your College Name" value={college} onChange={(e)=>setCollege(e.target.value)} required/>
                         </div>
                     </div>
                 </div>
@@ -90,11 +90,11 @@ export default function Register() {
                     <div className="login-container">
                         <span style={{ marginRight: '0.4em' }}>Already have an account? </span>
                        
-                        <Link to="/login" className="login-link">Log In</Link>
+                        <Link to="/login" className="login-link output">Log In</Link>
                     </div>
                 </div>
                 </form>
-                <div className="forgot">Forgot your password? <a href="rand.html">Click here</a></div>
+                <div className="forgot">Forgot your password? <a href="random.html" className="output">Click here</a></div>
             </div>
         </div>
     );
