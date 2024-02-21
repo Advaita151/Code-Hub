@@ -32,19 +32,52 @@ router.post("/login",async (req,res)=>{
   
 })
   
-router.post("/register", async(req,res)=>{
-    const {email,password,name,codeforces,codechef,leetcode,college} = req.body;
+// router.post("/register", async(req,res,next)=>{
+//     const {email,password,name,codeforces,codechef,leetcode,college} = req.body;
   
+//     try {
+//         const newUser = new User({email,password,name,codeforces,codechef,leetcode,college});
+//         await newUser.save()
+//         const token = createToken(newUser._id);
+//         res.cookie('jwt',token,cookieOptions)
+//         res.status(200).json({
+//                 status: "success",
+//                 data: {
+//                   newUser,
+//                 },
+//               })
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).send("User not Created")
+//         next(error)
+//     }
+  
+// })
+router.post("/reg", async(req,res) =>{
     try {
-        const user = await User.create({email,password,name,codeforces,codechef,leetcode,college});
-        const token = createToken(user._id);
+        const newUser = await User.create({
+            email: req.body.email,
+            name: req.body.name,
+            password: req.body.password,
+            codeforces: req.body.codeforces,
+            codechef:req.body.codechef,
+            leetcode: req.body.leetcode,
+            college: req.body.college,
+        })
+        const token = createToken(newUser._id);
         res.cookie('jwt',token,cookieOptions)
-        res.status(400).json(user)
+        res.status(200).json({
+            status: "success",
+            data: {
+              newUser,
+            },
+        })
     } catch (error) {
         console.log(error);
-        res.status(400).send("User not Created")
+        res.status(500).send("User not Created")
+        next(error)
     }
-  
+    
 })
 
 

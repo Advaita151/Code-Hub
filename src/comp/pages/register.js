@@ -22,14 +22,21 @@ export default function Register() {
     const [college, setCollege] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async(e) =>{
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5555/profile/register', {email,password,name,codeforces,codechef,leetcode,college})
-            console.log(response.data)
-            if(response.data.user){
+            console.log("hello")
+            const response =await axios.post('http://localhost:5555/profile/reg', 
+                JSON.stringify({email,name,password,codeforces,codechef,leetcode,college}),
+                {
+                    headers:{'Content-Type':'application/json'},
+                    withCredentials:true
+                }
+            )
+            console.log(response)
+            if(response.data.status === "success"){
                 navigate("/")
-            }else alert(response.data.message)
+            }else alert(response.response.data.message)
         } catch (error) {
             console.error("Register failed",error)
         }
