@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from "react";
 import bg from '../../resources/bg2.mp4';
 import '../UserProfile.css'; 
+import UserInitials from "../othercomponents/userInitials.js";
+import { Link } from "react-router-dom";
 import img from '../../resources/adi.jpeg'
 
 const UserProfile = () => {
@@ -31,54 +34,80 @@ const UserProfile = () => {
     }));
   };
 
+  const [userName, setUserName] = useState("P");
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5555/user/details`, {
+          withCredentials: true,
+        });
+        setUserName(response.data.name);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+ 
+  const [menuOpen, setMenuOpen] = useState(false); 
+  
+
   const videoStyles = {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
   };
 
   const navStyles = {
-    backgroundColor: 'rgba(0, 0, 0, 1)', 
-    padding: '10px',
-    position: 'sticky',
+    backgroundColor: "rgba(0, 0, 0, 1)",
+    padding: "10px",
+    position: "sticky",
     top: 0,
-    width: '100%',
+
+    width: "100%",
     zIndex: 1000,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    transition: "color 0.3s ease",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   };
 
   const navTitleStyles = {
-    margin: 0, 
-    fontSize: '1.5rem', 
-    transition: 'font-size 0.3s ease', 
+    margin: 0,
+    fontSize: "1.5rem",
+    transition: "font-size 0.3s ease",
   };
 
   const navItemStyles = {
-    margin: '0 10px',
-    color: 'white',
-    textDecoration: 'none',
-    padding: '8px 16px', 
-    borderRadius: '5px', 
-    transition: 'background-color 0.3s ease, color 0.3s ease',
+    margin: "0 10px",
+    color: "white",
+    textDecoration: "none",
+    padding: "8px 16px",
+    borderRadius: "5px",
+    transition: "background-color 0.3s ease, color 0.3s ease",
   };
 
   const profileCircleStyles = {
-    width: '30px',
-    height: '30px',
-    borderRadius: '50%',
-    backgroundColor: 'white',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    cursor: 'pointer',
-    marginLeft: 'auto', 
+    width: "30px",
+    height: "30px",
+    marginLeft: "2em",
+    borderRadius: "50%",
+    backgroundColor: "white",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    cursor: "pointer",
+    marginLeft: "2em",
+  };
+  const handleMenuToggle = () => {
+    setMenuOpen(!menuOpen);
   };
 
+
   const mainStyles = {
-    overflowX: 'hidden', 
+    overflowX: "hidden",
   };
 
   const scrollToSection = () => {
@@ -92,14 +121,40 @@ const UserProfile = () => {
     <div style={mainStyles}>
       <div style={navStyles}>
         <div>
-          <h2 style={navTitleStyles} className="text-white">Code Hub</h2>
+          <h2 style={navTitleStyles} className="text-white">
+            Code Hub
+          </h2>
         </div>
-        <div className='hoverstyle' style={{ display: 'flex', alignItems: 'center' }}>
-          <a style={navItemStyles} href="#home">Home</a>
-          <a style={navItemStyles} href="#home">About Us</a>
-          <a style={navItemStyles} href="#leaderboards" onClick={scrollToSection}>Leaderboards</a>
-          <a style={navItemStyles} href="#question-bank">Practice</a>
-          <div style={profileCircleStyles}>P</div>
+
+        <div className="hamburger-menu" onClick={handleMenuToggle}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+
+        {/* Navbar links */}
+        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <Link to="/" style={navItemStyles}>
+            Home
+          </Link>
+          <a
+            style={navItemStyles}
+            href="#leaderboards"
+            onClick={scrollToSection}
+          >
+            Leaderboards
+          </a>
+          <Link to="/team" style={navItemStyles}>
+            About Us
+          </Link>
+          <a style={navItemStyles} href="#question-bank">
+            Practice
+          </a>
+        </div>
+        <div style={profileCircleStyles}>
+          <Link to="/profile">
+            <UserInitials name={userName} />
+          </Link>
         </div>
       </div>
 
