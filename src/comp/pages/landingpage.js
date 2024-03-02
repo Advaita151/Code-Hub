@@ -10,7 +10,7 @@ import axios from "axios";
 function Landingpage() {
   const [userName, setUserName] = useState("P");
   const [nextContest, setNextContest] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false); 
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const videoStyles = {
     position: "absolute",
@@ -82,7 +82,7 @@ function Landingpage() {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
-const [nextWednesday, setNextWednesday] = useState('');
+  const [nextWednesday, setNextWednesday] = useState("");
   function getNextLeetCodeContest() {
     const today = new Date();
     const dayOfWeek = today.getDay();
@@ -113,23 +113,25 @@ const [nextWednesday, setNextWednesday] = useState('');
   const calculateNextWednesday = () => {
     const today = new Date();
     let dayOfWeek = today.getDay();
-    if (dayOfWeek === 3) { 
-        dayOfWeek = 10;
+    if (dayOfWeek === 3) {
+      dayOfWeek = 10;
     }
-    const daysUntilWednesday = (10 - dayOfWeek + 7) % 7; 
-    const nextWednesdayDate = new Date(today.getTime() + daysUntilWednesday * 24 * 60 * 60 * 1000); 
-    const nextWednesdayFormatted = `${nextWednesdayDate.getMonth() + 1}/${nextWednesdayDate.getDate()}/${nextWednesdayDate.getFullYear()}`; 
-    setNextWednesday( nextWednesdayFormatted);
+    const daysUntilWednesday = (10 - dayOfWeek + 7) % 7;
+    const nextWednesdayDate = new Date(
+      today.getTime() + daysUntilWednesday * 24 * 60 * 60 * 1000
+    );
+    const nextWednesdayFormatted = `${
+      nextWednesdayDate.getMonth() + 1
+    }/${nextWednesdayDate.getDate()}/${nextWednesdayDate.getFullYear()}`;
+    setNextWednesday(nextWednesdayFormatted);
   };
 
   useEffect(() => {
     calculateNextWednesday();
-    const interval = setInterval(calculateNextWednesday, 24*36000000);
+    const interval = setInterval(calculateNextWednesday, 24 * 36000000);
 
     return () => clearInterval(interval);
   }, []);
-
-  
 
   useEffect(() => {
     const fetchNextContest = async () => {
@@ -173,13 +175,13 @@ const [nextWednesday, setNextWednesday] = useState('');
 
   const [nextLeetContest, setNextLeetContest] = useState(null);
 
- useEffect(() => { 
+  useEffect(() => {
     const next = getNextLeetCodeContest();
     setNextLeetContest(next);
-    const intervall = setInterval(next, 24*3600000);
+    const intervall = setInterval(next, 24 * 3600000);
 
     return () => clearInterval(intervall);
-}, []);
+  }, []);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
