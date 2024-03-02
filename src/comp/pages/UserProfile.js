@@ -4,7 +4,7 @@ import axios from 'axios'
 import bg from '../../resources/bg2.mp4';
 import '../UserProfile.css'; 
 import UserInitials from "../othercomponents/userInitials.js";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import img from '../../resources/adi.jpeg'
 
 const UserProfile = () => {
@@ -16,9 +16,19 @@ const UserProfile = () => {
     codechefUsername: "SampleName_cc",
     leetcodeUsername: "SampleName_lc",
   });
+  const navigate = useNavigate();
 
   const handleEditClick = () => {
     setIsEditable(true);
+  };
+  const handleLogoutClick = async () => {
+    try {
+      const res = await axios.get('http://localhost:5555/user/logout', {withCredentials:true});
+      console.log(res.data)
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const handleSaveClick = async() => {
@@ -181,7 +191,7 @@ const UserProfile = () => {
         </video>
         <div className='user-detail-container'>
           <div className='user-detail imger'>
-             <h2>SN</h2>
+             <h2><UserInitials name={userName} /></h2>
           </div>
           <div className='user-detail first'>
             <label>Name:</label>
@@ -254,7 +264,7 @@ const UserProfile = () => {
           ) : (
             <button onClick={handleEditClick}>Edit</button>
           )}
-          <button onClick={handleEditClick}>Logout</button> </div>
+          <button onClick={handleLogoutClick}>Logout</button> </div>
         </div>
       </main>
     </div>
