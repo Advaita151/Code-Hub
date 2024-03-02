@@ -181,7 +181,7 @@ const UserProfile = () => {
         </video>
         <div className='user-detail-container'>
           <div className='user-detail imger'>
-            <img src={img} alt="User" />
+             <h2>SN</h2>
           </div>
           <div className='user-detail first'>
             <label>Name:</label>
@@ -248,11 +248,13 @@ const UserProfile = () => {
               <span>{userData.leetcodeUsername}</span>
             )}
           </div>
+          <div>
           {isEditable ? (
             <button onClick={handleSaveClick}>Save</button>
           ) : (
             <button onClick={handleEditClick}>Edit</button>
           )}
+          <button onClick={handleEditClick}>Logout</button> </div>
         </div>
       </main>
     </div>
