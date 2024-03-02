@@ -11,6 +11,15 @@ function Landingpage() {
   const [userName, setUserName] = useState("P");
   const [nextContest, setNextContest] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const handleleet = () => {
+    window.location.href = "https://leetcode.com/contest/";
+  };
+  const handlecc = () => {
+    window.location.href = "https://www.codechef.com/contests";
+  };
+  const handlecf = () => {
+    window.location.href = "https://codeforces.com/contests";
+  };
 
   const videoStyles = {
     position: "absolute",
@@ -250,7 +259,9 @@ function Landingpage() {
             <p className="text-lg mb-4" style={{ whiteSpace: "nowrap" }}>
               Let us compete here in the arena
             </p>
-            <button className={getStartedButtonStyles}>Get Started</button>
+            <Link to="/register">
+              <button className={getStartedButtonStyles}>Get Started</button>
+            </Link>
           </div>
         </div>
 
@@ -278,7 +289,9 @@ function Landingpage() {
                   <p className="text-gray-600">No Upcoming Contest</p>
                 )}
               </div>
-              <button className={getStartedButtonStylesnew}>Register</button>
+              <button className={getStartedButtonStylesnew} onClick={handlecf}>
+                Register
+              </button>
             </div>
             <div className="card">
               <img
@@ -292,7 +305,9 @@ function Landingpage() {
                   Next is on:<br></br> {nextWednesday}, 8:00 PM
                 </p>
               </div>
-              <button className={getStartedButtonStylesnew}>Register</button>
+              <button className={getStartedButtonStylesnew} onClick={handlecc}>
+                Register
+              </button>
             </div>
             <div className="card">
               <img
@@ -311,7 +326,12 @@ function Landingpage() {
                   <p>Loading...</p>
                 )}
               </div>
-              <button className={getStartedButtonStylesnew}>Register</button>
+              <button
+                className={getStartedButtonStylesnew}
+                onClick={handleleet}
+              >
+                Register
+              </button>
             </div>
           </div>
         </div>
