@@ -21,6 +21,33 @@ router.get("/logout",authenticateToken, async(req,res)=>{
   res.status(200).send({ status: "success", message: "Logged out successfully" });
 })
 
+router.post('/update', async (req, res) => {
+  const { email, name, codeforcesUsername, codechefUsername, leetcodeUsername } = req.body;
+
+  try {
+    const user = await User.findOneAndUpdate(
+      { email: email },
+      {
+        $set: {
+          name: name,
+          codeforces: codeforcesUsername,
+          codechef: codechefUsername,
+          leetcode: leetcodeUsername
+        }
+      },
+      { new: true } 
+    );
+
+    if (user) {
+      res.json({ message: "User updated successfully", user });
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error updating user", error });
+  }
+});
+
 function authenticateToken(req, res, next) {
     const token = req.cookies.jwt;
   

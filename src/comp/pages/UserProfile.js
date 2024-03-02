@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import axios from 'axios'
 import bg from '../../resources/bg2.mp4';
 import '../UserProfile.css'; 
 import UserInitials from "../othercomponents/userInitials.js";
@@ -20,10 +21,16 @@ const UserProfile = () => {
     setIsEditable(true);
   };
 
-  const handleSaveClick = () => {
-    // function to handle the save click
+  const handleSaveClick = async() => {
     setIsEditable(false); 
-    // send updated userData to the server
+    try {
+      const response = await axios.post('http://localhost:5555/user/update',userData,{withCredentials:true});
+      console.log(response.data)
+      alert("User Updated Successfully")
+    } catch (error) {
+      console.log(error)
+      alert("Error Updating the User")
+    }
   };
 
   const handleInputChange = (e) => {
@@ -42,6 +49,15 @@ const UserProfile = () => {
           withCredentials: true,
         });
         setUserName(response.data.name);
+        const { name, email, codeforces, codechef, leetcode } = response.data;
+        setUserData({
+          name: name,
+          email: email,
+          codeforcesUsername: codeforces ,
+          codechefUsername: codechef ,
+          leetcodeUsername: leetcode 
+        });
+          
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
