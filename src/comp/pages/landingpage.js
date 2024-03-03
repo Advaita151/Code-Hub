@@ -8,7 +8,7 @@ import UserInitials from "../othercomponents/userInitials.js";
 import axios from "axios";
 
 function Landingpage() {
-  const [userName, setUserName] = useState("P");
+  const [userName, setUserName] = useState("Profile");
   const [nextContest, setNextContest] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const handleleet = () => {

@@ -10,7 +10,7 @@ import img2 from "../../resources/adv.jpeg";
 import "../team.css";
 
 function Team() {
-  const [userName, setUserName] = useState("P");
+  const [userName, setUserName] = useState("Profile");
 
   const [menuOpen, setMenuOpen] = useState(false);
 
