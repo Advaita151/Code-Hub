@@ -36,6 +36,7 @@ function Team() {
   };
   const mainStyles = {
     overflowX: "hidden",
+    width: "100vw",
   };
   const navTitleStyles = {
     margin: 0,
@@ -90,7 +91,7 @@ function Team() {
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
-  let message = `Codehub was made by these two individuals in hope to get some pussy \n i am randomly typing anything i like cause tmkc`;
+  let message = `CodeHub, envisioned and developed by two BTech  students, is a dynamic platform designed for college students. It offers a live leaderboard showcasing rankings across various coding platforms, fostering healthy competition and inspiring students to excel. Additionally, it features competition reminders and an  practice arena (currently under dev) , enhancing coding skills and promoting a vibrant learning community.`;
   return (
     <div style={mainStyles}>
       {/* Navbar */}
@@ -133,133 +134,102 @@ function Team() {
         </div>
       </div>
 
-      <main className="relative h-screen w-screen">
-        <video autoPlay loop muted style={videoStyles}>
-          <source src={bg} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </main>
-      <main className="relative h-screen w-screen ">
-        <video autoPlay loop muted style={videoStyles}>
-          <source src={bg} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </main>
-      <main className="relative w-screen toggle">
-  <video autoPlay loop muted style={videoStyles}>
-    <source src={bg} type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</main>
-
-
       <div className="container-team">
-        <div className="row">
-          <div className="col-md-12 text-center container-header">
-            <h2 className="section-title">The Team Behind CodeHub</h2>
-            <p className="section-subtitle">{message}</p>
-          </div>
-          <div className="container-new">
-            <div className="col-sm-6 col-md-4 container-header2">
-              <div className="team-item">
-                <img src={img2} className="team-img" alt="advaita" />
-                <h3> Advait Vedanta</h3>
-                <div className="team-info">
-                  <p>MERN Stack Developer</p>
-                  <p>
-                    {" "}
-                    Full Stack Developer with a passion for creating efficient
-                    and user-friendly web applications and implementing cutting
-                    edge AI/ML solutions. Proficient in both front-end and
-                    back-end technologies. With a solid understanding of MERN
-                    stack and database like firebase.
-                  </p>
-                  <ul className="team-icon">
-                    <li>
-                      <a
-                        href="https://twitter.com/AdvaitaVedant12?t=r2BTYqrWMjy90uHPky8q4A&s=09"
-                        className="twitter"
-                      >
-                        <i className="fa fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.instagram.com/atpack_151/"
-                        className="instagram"
-                      >
-                        <i className="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://github.com/Advaita151"
-                        className="github"
-                      >
-                        <i className="fa fa-github"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/advaita-vedanta-1b9340202/"
-                        className="linkedin"
-                      >
-                        <i className="fa fa-linkedin"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+        <div className="col-md-12 text-center container-header">
+          <h2 className="section-title">The Team Behind CodeHub</h2>
+          <p className="section-subtitle">{message}</p>
+        </div>
+        <div className="container-new">
+          <div className="col-sm-6 col-md-4 container-header2">
+            <div className="team-item">
+              <img src={img2} className="team-img" alt="advaita" />
+              <h3> Advaita Vedanta</h3>
+              <div className="team-info">
+                <p>MERN Stack Developer</p>
+                <p>
+                  {" "}
+                  Full Stack Developer with a passion for creating efficient and
+                  user-friendly web applications and implementing cutting edge
+                  AI/ML solutions. Proficient in both front-end and back-end
+                  technologies. With a solid understanding of MERN stack and
+                  database like firebase.
+                </p>
+                <ul className="team-icon">
+                  <li>
+                    <a
+                      href="https://twitter.com/AdvaitaVedant12?t=r2BTYqrWMjy90uHPky8q4A&s=09"
+                      className="twitter"
+                    >
+                      <i className="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/atpack_151/"
+                      className="instagram"
+                    >
+                      <i className="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Advaita151" className="github">
+                      <i className="fa fa-github"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/advaita-vedanta-1b9340202/"
+                      className="linkedin"
+                    >
+                      <i className="fa fa-linkedin"></i>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div className="col-sm-6 col-md-4 container-header2">
-              <div className="team-item">
-                <img src={img1} className="team-img" alt="aditya" />
-                <h3> Aditya Shukla</h3>
-                <div className="team-info">
-                  <p>MERN Stack Developer</p>
-                  <p>
-                    {" "}
-                    Enthusiastic emerging Full Stack Developer with a strong
-                    foundation in C++ and MERN Stack . Eager to tackle complex
-                    web development projects and create seamless, user-friendly
-                    experiences. Passionate about honing coding skills through
-                    competitive programming challenges
-                  </p>
-                  <ul className="team-icon">
-                    <li>
-                      <a
-                        href=""
-                        className="twitter"
-                      >
-                        <i className="fa fa-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.instagram.com/who.is.adi"
-                        className="instagram"
-                      >
-                        <i className="fa fa-instagram"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://github.com/adityasays"
-                        className="github"
-                      >
-                        <i className="fa fa-github"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/adityashukla190503/"
-                        className="linkedin"
-                      >
-                        <i className="fa fa-linkedin"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+          </div>
+          <div className="col-sm-6 col-md-4 container-header2">
+            <div className="team-item">
+              <img src={img1} className="team-img" alt="aditya" />
+              <h3> Aditya Shukla</h3>
+              <div className="team-info">
+                <p>MERN Stack Developer</p>
+                <p>
+                  {" "}
+                  Enthusiastic emerging Full Stack Developer with a strong
+                  foundation in C++ and MERN Stack . Eager to tackle complex web
+                  development projects and create seamless, user-friendly
+                  experiences. Passionate about honing coding skills through
+                  competitive programming challenges
+                </p>
+                <ul className="team-icon">
+                  <li>
+                    <a href="" className="twitter">
+                      <i className="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.instagram.com/who.is.adi"
+                      className="instagram"
+                    >
+                      <i className="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/adityasays" className="github">
+                      <i className="fa fa-github"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/adityashukla190503/"
+                      className="linkedin"
+                    >
+                      <i className="fa fa-linkedin"></i>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
