@@ -2,7 +2,7 @@ import "../style.css";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import bg from "../../resources/backvideo(low).mp4";
+
 import UserInitials from "../othercomponents/userInitials.js";
 import axios from "axios";
 import img1 from "../../resources/adi.jpeg";
@@ -14,12 +14,7 @@ function Team() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const videoStyles = {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-  };
+ 
 
   const navStyles = {
     backgroundColor: "rgba(0, 0, 0, 1)",
@@ -113,13 +108,9 @@ function Team() {
           <Link to="/" style={navItemStyles}>
             Home
           </Link>
-          <a
-            style={navItemStyles}
-            href="#leaderboards"
-            onClick={scrollToSection}
-          >
+          <Link to="/" style={navItemStyles}>
             Leaderboards
-          </a>
+          </Link>
           <Link to="/team" style={navItemStyles}>
             About Us
           </Link>

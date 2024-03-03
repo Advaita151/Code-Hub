@@ -163,13 +163,9 @@ const UserProfile = () => {
           <Link to="/" style={navItemStyles}>
             Home
           </Link>
-          <a
-            style={navItemStyles}
-            href="#leaderboards"
-            onClick={scrollToSection}
-          >
+          <Link to="/" style={navItemStyles}>
             Leaderboards
-          </a>
+          </Link>
           <Link to="/team" style={navItemStyles}>
             About Us
           </Link>
