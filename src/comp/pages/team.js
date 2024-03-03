@@ -119,9 +119,14 @@ function Team() {
           </a>
         </div>
         <div style={profileCircleStyles}>
-          <Link to="/profile">
+          {userName === 'Profile'?(
+          <Link to="/login">
             <UserInitials name={userName} />
           </Link>
+          ):(
+          <Link to="/profile">
+            <UserInitials name={userName} />
+          </Link>)}
         </div>
       </div>
 
