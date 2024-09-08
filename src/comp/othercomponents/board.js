@@ -14,7 +14,7 @@ export default function Board(){
   }, []);
   const fetchLeaderboard = async (platform) => {
     try {
-      const response = await axios.get(`http://localhost:5555/board/${platform}`);
+      const response = await axios.get(`https://code-hub-808r.onrender.com/board/${platform}`);
       switch (platform) {
         case 'codeforces':
           setCodeforcesLeaderboard(response.data);

@@ -24,7 +24,7 @@ const TableDemo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5555/profile/register', formData);
+      const response = await axios.post('https://code-hub-808r.onrender.com/profile/register', formData);
       console.log('User registered successfully:', response.data);
       
       setError('');

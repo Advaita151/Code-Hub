@@ -23,7 +23,7 @@ const UserProfile = () => {
   };
   const handleLogoutClick = async () => {
     try {
-      const res = await axios.get('http://localhost:5555/user/logout', {withCredentials:true});
+      const res = await axios.get('https://code-hub-808r.onrender.com/user/logout', {withCredentials:true});
       console.log(res.data)
       navigate('/')
     } catch (error) {
@@ -34,7 +34,7 @@ const UserProfile = () => {
   const handleSaveClick = async() => {
     setIsEditable(false); 
     try {
-      const response = await axios.post('http://localhost:5555/user/update',userData,{withCredentials:true});
+      const response = await axios.post('https://code-hub-808r.onrender.com/user/update',userData,{withCredentials:true});
       console.log(response.data)
       alert("User Updated Successfully")
     } catch (error) {
@@ -55,7 +55,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5555/user/details`, {
+        const response = await axios.get(`https://code-hub-808r.onrender.com/user/details`, {
           withCredentials: true,
         });
         setUserName(response.data.name);

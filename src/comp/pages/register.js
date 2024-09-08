@@ -26,7 +26,7 @@ export default function Register() {
         e.preventDefault();
         try {
             console.log("hello")
-            const response =await axios.post('http://localhost:5555/profile/reg', 
+            const response =await axios.post('https://code-hub-808r.onrender.com/profile/reg', 
                 JSON.stringify({email,name,password,codeforces,codechef,leetcode,college}),
                 {
                     headers:{'Content-Type':'application/json'},
