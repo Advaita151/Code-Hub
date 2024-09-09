@@ -170,7 +170,7 @@ function Landingpage() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`https://code-hub-5.onrender.com/user/details`, {
+        const response = await axios.get(`https://code-hub-808r.onrender.com/user/details`, {
           withCredentials: true,
         });
         setUserName(response.data.name);

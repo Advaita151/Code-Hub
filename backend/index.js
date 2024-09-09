@@ -37,7 +37,7 @@ setInterval(updateLeetcodePeriodically,1000 * 60 * 60 * 24);
 app.use(express.json());
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:8000','https://code-hub-5hnw.vercel.app','https://code-hub-5.onrender.com/' ,'https://code-hub-808r.onrender.com'],
+    origin: ['http://localhost:3000', 'http://localhost:8000','https://code-hub-808r.onrender.com','https://codehub-zqh6.onrender.com','https://code-hub-5.onrender.com/' ,'https://codehub-zqh6.onrender.com' ,'https://code-hub-808r.onrender.com'],
     credentials: true, 
   }));
 
